@@ -31,7 +31,14 @@ public class MailComparatorTest {
 	
 	//TODO
 	//Autres tests unitaires
-	
-	
+
+	@Test
+	public final void statutDifferentsMails() {
+		Mail mail1 = new Mail();
+		Mail mail2 = new Mail();
+		mail1.setStatut(Mail.Statut.UNSENT);
+		mail2.setStatut(Mail.Statut.SENT);
+		assertThat(comparator.compare(mail1, mail2), is(1));
+	}
 	
 }
