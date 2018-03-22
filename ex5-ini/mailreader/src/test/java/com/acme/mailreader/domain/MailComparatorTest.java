@@ -40,4 +40,11 @@ public class MailComparatorTest {
 		assertThat(comparator.compare(mail1, mail2), is(MailComparator.PREMIER_PLUS_GRAND));		
 	}
 	
+	@Test
+	public final void ordreAlphabetiqueSiMemeStatut() {
+		Mail mail1 = new Mail.Builder("sujetA").statut(Mail.Statut.ENVOYE).build();
+		Mail mail2 = new Mail.Builder("sujetB").statut(Mail.Statut.ENVOYE).build();
+		assertThat(comparator.compare(mail1, mail2), is(MailComparator.PREMIER_PLUS_GRAND));		
+	}
+	
 }

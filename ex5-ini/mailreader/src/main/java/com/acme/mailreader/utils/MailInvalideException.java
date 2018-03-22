@@ -17,7 +17,7 @@ public class MailInvalideException extends Exception {
 			return message;
 		}
 	}
-
+	
 	public MailInvalideException(ErreurMail erreur) {
 		super(erreur.getMessage());
 	}

@@ -17,22 +17,24 @@ Then le tri doit retourner "<resu>"
 # Les resulats peuvent être : MAIL1_AVANT, MAIL1_APRES, EGAUX
 	
 Examples:
-| important1 | important2 | statut1    | statut2 | sujet1  		    | sujet2        | date1                | date2                | resu        |
+| important1 | important2 | statut1    | statut2 | sujet1  		| sujet2        | date1                | date2                | resu        |
 | true       | false	  | PAS_ENVOYE | LU      | aaaaa			| bbbbbb 		| 2017-01-01T14:03:00Z | 2017-01-01T14:03:34Z | MAIL1_AVANT |  
 | true       | true	      | PAS_ENVOYE | LU      | aaaaa			| bbbbbb 		| 2017-01-01T14:03:00Z | 2017-01-01T14:03:34Z | MAIL1_APRES |
-| true       | true	      | LU		   | LU      | aaaaa			| aaaaa 		| 2017-01-01T14:03:00Z | 2017-01-01T14:03:34Z | MAIL1_APRES | 
-    
-    
+| true       | true	      | LU		   | LU      | aaaaa			| aaaaa 		| 2017-01-01T14:03:00Z | 2017-01-01T14:03:34Z | MAIL1_AVANT | 
+| true       | false	  | ENVOYE | LU      | aaaaa			| bbbbbb 		| 2017-01-01T14:03:00Z | 2017-01-01T14:03:34Z | MAIL1_AVANT |  
+| false       | false	      | PAS_ENVOYE | LU      | aaaa			| bbbbb 		| 2017-02-01T14:03:00Z | 2017-01-01T14:03:34Z | MAIL1_APRES |
+| true       | true	      | LU | LU      | aaa			| aaa 		| 2017-01-01T14:03:00Z | 2017-01-01T14:03:00Z | EGAUX |
+
 Scenario: ordre d'une liste de mails
 Given les mails :
-| important  | statut   		 | sujet			  		| date                 | 
+| important  | statut   		     | sujet			  		| date                 | 
 | true       | PAS_ENVOYE 		 | aaaaa					| 2017-01-01T14:03:00Z |
 | false      | PAS_ENVOYE 		 | aaaaa					| 2017-01-01T14:03:00Z |
 | false      | LU		 		 | bbbbb					| 2016-12-01T14:03:00Z |
 
 When je trie
 Then la liste ordonnée doit être :
-| important  | statut   		 | sujet			  		| date                 |
+| important  | statut   		     | sujet			  		| date                 |
 | true       | PAS_ENVOYE 		 | aaaaa					| 2017-01-01T14:03:00Z |
 | false      | LU		 		 | bbbbb					| 2016-12-01T14:03:00Z | 
 | false      | PAS_ENVOYE 		 | aaaaa					| 2017-01-01T14:03:00Z |
